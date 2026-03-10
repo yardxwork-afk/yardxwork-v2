@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "fflate": "^0.8.2",
     "next": "^14.2.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
+    "stripe": "^20.4.1",
     "three": "0.128.0"
   },
   "devDependencies": {
@@ -19,8 +21,8 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/three": "^0.128.0",
-    "typescript": "^5",
     "eslint": "^8",
-    "eslint-config-next": "^14.2.0"
+    "eslint-config-next": "^14.2.0",
+    "typescript": "^5"
   }
 }

@@ -1,0 +1,75 @@
+/* YARDXWORK — Global Styles */
+
+:root {
+  --pad-x: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: var(--font-body), sans-serif;
+  overflow: hidden;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+/* ── Responsive ─────────────────────────────────── */
+
+@media (min-width: 768px) {
+  :root {
+    --pad-x: 24px;
+  }
+}
+
+/* Mobile: ensure interactive touch targets ≥ 44px */
+@media (max-width: 767px) {
+  /* size / qty pill buttons — tall enough for tapping (exclude color swatches) */
+  .pill-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* city / state / zip — stack vertically on small screens */
+  .checkout-addr-row {
+    flex-direction: column !important;
+  }
+  .checkout-addr-row > div {
+    max-width: 100% !important;
+  }
+
+  /* Controls: size row wraps the slider below the pills */
+  .size-row {
+    flex-wrap: wrap;
+  }
+  .size-slider {
+    width: 100%;
+    max-width: 100% !important;
+    order: 10;
+    margin-top: 4px;
+  }
+  .size-dim {
+    margin-left: auto;
+  }
+}

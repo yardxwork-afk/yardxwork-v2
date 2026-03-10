@@ -15,9 +15,9 @@ interface ConfirmationProps {
 }
 
 export default function Confirmation({ orderNum, model, sizeP, color, qty, pricing, onNew }: ConfirmationProps) {
-  const mono: React.CSSProperties = { fontFamily: "'JetBrains Mono', monospace" };
+  const mono: React.CSSProperties = { fontFamily: "var(--font-mono), monospace" };
   return (
-    <div style={{ maxWidth: 520, margin: "0 auto", padding: "80px 24px", textAlign: "center" }}>
+    <div style={{ maxWidth: 520, margin: "0 auto", padding: "80px var(--pad-x)", textAlign: "center" }}>
       <div style={{ ...mono, fontSize: 12, color: "#666", letterSpacing: ".1em", marginBottom: 24 }}>order confirmed</div>
       <div style={{ ...mono, fontSize: 18, marginBottom: 8, letterSpacing: ".05em" }}>{orderNum}</div>
       <div style={{ ...mono, fontSize: 11, color: "#666", marginBottom: 4 }}>{model.fileName}</div>
