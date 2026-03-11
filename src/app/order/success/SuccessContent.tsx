@@ -1,6 +1,7 @@
 "use client";
 
 interface SuccessContentProps {
+  orderNum: string;
   fileName: string;
   sizePreset: string;
   colorName: string;
@@ -8,14 +9,12 @@ interface SuccessContentProps {
   totalPrice: string;
   discount: number;
   customerEmail: string;
-  sessionId: string;
 }
 
 export default function SuccessContent({
-  fileName, sizePreset, colorName, qty, totalPrice, discount, customerEmail, sessionId,
+  orderNum, fileName, sizePreset, colorName, qty, totalPrice, discount, customerEmail,
 }: SuccessContentProps) {
   const mono: React.CSSProperties = { fontFamily: "var(--font-mono), monospace" };
-  const orderRef = "YW-" + sessionId.slice(-6).toUpperCase();
 
   return (
     <div style={{ minHeight: "100dvh", background: "#000", color: "#FFF" }}>
@@ -35,7 +34,7 @@ export default function SuccessContent({
           order confirmed
         </div>
         <div style={{ ...mono, fontSize: 18, marginBottom: 8, letterSpacing: ".05em" }}>
-          {orderRef}
+          {orderNum}
         </div>
         <div style={{ ...mono, fontSize: 11, color: "#666", marginBottom: 4 }}>
           {fileName}
@@ -49,7 +48,7 @@ export default function SuccessContent({
         </div>
         {customerEmail && (
           <div style={{ ...mono, fontSize: 11, color: "#666", marginTop: 8 }}>
-            receipt sent to {customerEmail} by stripe
+            confirmation sent to {customerEmail}
           </div>
         )}
         <div style={{ ...mono, fontSize: 11, color: "#333", marginTop: 24, marginBottom: 32 }}>
