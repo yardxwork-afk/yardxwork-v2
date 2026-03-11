@@ -35,11 +35,24 @@ export default function Checkout({ model, sizeP, scale, color, qty, pricing }: C
     setLoading(true);
     setApiError(null);
     try {
+      // 1. Upload file to R2
+      const form = new FormData();
+      form.append("file", new Blob([model.fileBuffer]), model.fileName);
+      const upRes = await fetch("/api/upload", { method: "POST", body: form });
+      const upData = await upRes.json();
+      if (!upRes.ok || !upData.key) {
+        setApiError(upData.error || "file upload failed");
+        setLoading(false);
+        return;
+      }
+
+      // 2. Create Stripe checkout session
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           fileName: model.fileName,
+          fileKey: upData.key,
           volCm3: model.volCm3,
           scaleFactor: model.scaleFactor,
           maxDimMm: model.maxDimMm,
@@ -121,7 +134,7 @@ export default function Checkout({ model, sizeP, scale, color, qty, pricing }: C
           background: loading ? "#333" : "#FFF", color: loading ? "#999" : "#000",
           cursor: loading ? "wait" : "pointer", opacity: loading ? 0.7 : 1,
         }}>
-          {loading ? "redirecting\u2026" : "pay with stripe \u2192"}
+          {loading ? "uploading\u2026" : "pay with stripe \u2192"}
         </button>
       </div>
     </div>

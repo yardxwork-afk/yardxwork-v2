@@ -64,6 +64,7 @@ export default async function OrderSuccessPage({ searchParams }: Props) {
       shipping_city: meta.shippingCity || null,
       shipping_state: meta.shippingState || null,
       shipping_zip: meta.shippingZip || null,
+      file_url: meta.fileKey || null,
     },
     { onConflict: "stripe_session" }
   );

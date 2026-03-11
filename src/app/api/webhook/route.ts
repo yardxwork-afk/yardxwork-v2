@@ -84,6 +84,7 @@ async function saveOrder(session: Stripe.Checkout.Session) {
     shipping_city: meta.shippingCity || null,
     shipping_state: meta.shippingState || null,
     shipping_zip: meta.shippingZip || null,
+    file_url: meta.fileKey || null,
   });
 
   if (error) {

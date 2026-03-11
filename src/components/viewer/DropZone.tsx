@@ -65,7 +65,7 @@ export default function DropZone({ model, status, onFile, onClear, children }: D
         if (maxDim === 0 || !isFinite(maxDim)) { onFile(null, "could not read geometry — file may be empty"); return; }
         if (maxDim / 25.4 < MIN_IN) { onFile(null, "model below minimum print size — review file guidelines"); return; }
         const sf = BV_MM / maxDim;
-        onFile({ fileName: file.name, geometry, volCm3: volumeMm3 / 1000, scaleFactor: sf, maxDimMm: maxDim, orientDebug }, null);
+        onFile({ fileName: file.name, geometry, fileBuffer: buf, volCm3: volumeMm3 / 1000, scaleFactor: sf, maxDimMm: maxDim, orientDebug }, null);
       } catch (err: unknown) {
         const msg = err instanceof Error ? err.message : "unknown error";
         console.error("Parse error:", err);

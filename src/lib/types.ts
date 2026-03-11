@@ -5,6 +5,7 @@ import type { PricingResult } from "./pricing";
 export interface ModelData {
   fileName: string;
   geometry: THREE.BufferGeometry;
+  fileBuffer: ArrayBuffer;
   volCm3: number;
   scaleFactor: number;
   maxDimMm: number;

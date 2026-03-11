@@ -4,6 +4,7 @@ import { calcPrice } from "@/lib/pricing";
 
 interface CheckoutBody {
   fileName: string;
+  fileKey: string;
   volCm3: number;
   scaleFactor: number;
   maxDimMm: number;
@@ -65,6 +66,7 @@ export async function POST(req: NextRequest) {
       ],
       metadata: {
         fileName: body.fileName.slice(0, 450),
+        fileKey: body.fileKey || "",
         volCm3: String(body.volCm3),
         scaleFactor: String(body.scaleFactor),
         maxDimMm: String(body.maxDimMm),

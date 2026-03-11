@@ -9,6 +9,7 @@ create table if not exists orders (
 
   -- File
   file_name       text not null,
+  file_url        text,
   vol_cm3         numeric,
   scale_factor    numeric,
   max_dim_mm      numeric,
